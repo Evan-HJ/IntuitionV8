@@ -12,47 +12,44 @@ events (List of event dicts)
 
 {%block body%}
 
-    <div class = "search-container">
-        <div class="search-text">
-            <p>Search and filter for events with the search bar. <br><br> <b> CLICK ON </b> events that you are interested in to see what's in store! </p>
-        </div>
+    <div class = "container-fluid" id = "search-box">
+        <h1>EVENTS</h1>
+        <p>Search and filter for events with the search bar. <br><b> click on </b> events that you are interested in to see what's in store! </p>
 
-        <form class="search-box" action="/search_events" method="POST">
-            <div class="textbox" id = "search-query">
-                <label for="name"> Name: </label>
-                <input type="text" id ="name" placeholder = '{{name}}' name = "name">
-            </div>
-            <div class="textbox" id = "search-query">
-                <label for="organiser"> Organiser: </label>
-                <input type="text" id = 'organiser' placeholder = '{{organiser}}' name = "organiser">
-            </div>
-            
-            <div>
-                {% for tag in tags %}
-                    <input type="checkbox" name="tag/{{tag}}"> 
-                    <label for="{{tag}}"> {{tag}} </label>
-                {% endfor %}
+        <form autocomplete="off" action="/search_profiles" method="POST">
+            <div class="form-group">
+                <small id="emailHelp" class="form-text text-muted">Search for a specific user.</small>
+                <input class="form-control" type="text" id ="name" placeholder = 'Enter name' name = "name">
             </div>
 
+            <div class="autocomplete" style="width:300px;">
+                <small id="emailHelp" class="form-text text-muted">Search for a specific organiser.</small>
+                <input class = "form-control" id="myInput" type="text" name="school" placeholder="Enter organiser">
+            </div>
 
-            <input type = 'submit' class = "btn btn-outline-light btn-lg" value = 'Search'>
+            {% for tag in tags %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="tag/{{tag}}" id="defaultCheck1">
+                <label class="form-check-label" for="{{tag}}">
+                {{tag}}
+                </label>
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
-
-    <div class = "meetings-container">
+    <div class="container-fluid padding" id = "profiles-box">
         <p> Search Complete. There are <strong> {{events | length}}</strong>  results. </p>
 
         {% for event in events %}
-            <div class = "events-box">
-                <div class="meetings-details">
+            <div class="row justify-content-md-center padding" id = "profilebox">
+                <div class="col-sm-3" id = "profilelink">
                     <h2> <a href = "/event/{{event['name']}}"> {{event['name']}} by {{event['organiser']}}  </a></h2>         
-                </div>
-
+                </div>  
             </div>
         {%endfor%}
-
     </div>
-
 
 {%endblock%}
