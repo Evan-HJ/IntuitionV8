@@ -9,198 +9,109 @@
 {%endblock%}
 
 {%block body%}
-        <!-- <div class="content"> -->
-            <!-- IMAGE SLIDER -->
-        <div class="intro">
-            <div id = "slides" class="carousel slide" data-ride="carousel">
-                <ul class = "carousel-indicators">
-                    <li data-target="#slides" data-slide-to = "0" class = "active"></li>
-                    <li data-target="#slides" data-slide-to = "1"></li>
-                    <li data-target="#slides" data-slide-to = "2"></li>
-                </ul>
+    <div class="intro">
+        <div id = "slides" class="carousel slide" data-ride="carousel">
+            <ul class = "carousel-indicators">
+                <li data-target="#slides" data-slide-to = "0" class = "active"></li>
+                <li data-target="#slides" data-slide-to = "1"></li>
+                <li data-target="#slides" data-slide-to = "2"></li>
+            </ul>
 
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/static/images/intro.jpg">
-                        <div class="carousel-caption">
-                            <h1 class = "display-2"> TutorSG</h1>
-                            <h3>Join Today!</h3>
-                            <a href='/tutor/signup'><button type="button" class = "btn btn-outline-light btn-lg"> Sign Up as a Tutor!</button></a>
-                            <a href="/tutee/signup"><button type="button" class = "btn btn-outline-light btn-lg"> Sign Up as a Tutee!</button></a>
-                        </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/static/images/intro.jpg">
+                    <div class="carousel-caption">
+                        <h1 class = "display-2"> SGlinked</h1>
+                        <h3>Join Us Today!</h3>
+                        <a href="/signup"><button type="button" class = "btn btn-outline-light btn-lg"> Sign Up Now!</button></a>
                     </div>
-                    <div class="carousel-item">
-                        <img src="/static/images/intro2.jpg">
-                        <div class="carousel-caption">
-                            <h1>Study with us!</h1>
-                            <a href="/tutee/signup"><button type="button" class = "btn btn-outline-light btn-lg"> Sign Up as a Tutee!</button></a>
-                        </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/static/images/intro_2.jpeg">
+                    <div class="carousel-caption">
+                        <h1>Find events</h1>
+                        <a href="/events"><button type="button" class = "btn btn-outline-light btn-lg"> Explore </button></a>
                     </div>
-                    <div class="carousel-item">
-                        <img src="/static/images/intro3.jpg">
-                        <div class="carousel-caption">
-                            <h1>Volunteer today!</h1>
-                            <a href="/tutor/signup"><button type="button" class = "btn btn-outline-light btn-lg"> Sign Up as a Tutor!</button></a>
-                        </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/static/images/intro3.jpg">
+                    <div class="carousel-caption">
+                        <h1>Learn from seniors</h1>
+                        <a href="/users"><button type="button" class = "btn btn-outline-light btn-lg"> Explore </button></a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <div class="container-fluid">
-            <div class="row jumbotron">
-                <div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                    <p class = "lead">We want to enable underprivileged and disadvantaged children by giving them access to free tuition online.</p>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                    <a href="#about-us"> <button type="button" class="btn btn-outline-secondary btn-lg">Find out More</button> </a>
-                </div>
+    <div class="container-fluid">
+        <div class="row jumbotron">
+            <div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <p class = "lead">We want to help students build up their portfolio by helping them look for the best activities and events to undertake.</p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                <a href="#about-us"> <button type="button" class="btn btn-outline-secondary btn-lg">Find out More</button> </a>
             </div>
         </div>
+    </div>
 
-        <div class="container-fluid padding">
-            <div class="row welcome text-center">
-                <div class="col-12">
-                    <h1>Lend A Helping Hand.</h1>
-                </div>
-                <hr>
-                <div class="col-12">
-                    <p class = "lead">Welcome to TutorSG. Here, we match Tutors and Tutees for absolutely free! Sign up as a tutor to teach others and give back to society. Alternatively, if you are between primary 1 and primary 6, and have been referenced here by your school, sign up as a tutee!</p>
-                </div>
+    <div class="container-fluid padding">
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1>An all-in-one platform</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class = "lead">Welcome to SGlinked. Here, we offer a variety of activities and events targeted at youths and pre-university students, to help you make better and more informed choices when participating in such events. Alternatively, you can also look at what your seniors have done to follow in their footsteps!</p>
+                <p class="lead">Sign up now to start building your dream portfolio!</p>
             </div>
         </div>
+    </div>
 
-        <div class="container-fluid padding">
-            <div class="row text-center padding">
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <img src="/static/images/English.svg" class = "subject" width = 80px>
-                    <h3>Tutor English</h3>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <img src="/static/images/Math.svg" class = "subject" width = 80px>
-                    <h3>Tutor Math</h3>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <img src="/static/images/Chinese.svg" class = "subject" width = 80px>
-                    <h3>Tutor Chinese</h3>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <img src="/static/images/Science.svg" class = "subject" width = 80px>
-                    <h3>Tutor Science</h3>
-                </div>
-            </div>
-            <hr class = "my-4">
+    <div class= "signup-container">
+        <div class="text-containerhome">
+            <h1>Join us Today!</h1>
+            <a href="/signup"><button class = "btn1"> SIGN UP NOW! </button></a>
         </div>
+    </div>
 
-        <hr class = "my-4">
-        <figure>
-            <div class="fixed-wrap">
-                <div id="fixed">
-                    <h1>Repetition is the Mother of Learning.</h1>
-                </div>
-            </div>
-        </figure>
+    <hr>
 
-
-        <div class="container-fluid padding">
-            <div class="row welcome text-center">
-                <div class="col-12">
-                    <h1 class = "display-4">Join Us as a Tutor!</h1>
-                </div>
-                <hr>
-            </div>
-            <div class="text-container">
-                    <p class = "lead">Tutors can organise tutoring meetings with prospective tutees to teach them on basic concepts of English, Mother Tongue, Math and Science. This can really help boost the self-confidence of underprivileged tutees and give them an advantage in school</p>
-
-            </div>
-        </div>
-
+    <div class="aboutus" id = "about-us">
         <div class="container-fluid padding">
             <div class="row padding">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class = "card-img-top" src="/static/images/tutor1.jpg">
-                        <div class="card-body">
-                            <h4 class = "card-title">Veronica</h4>
-                            <p class = "card-text"> Veronica has been tutoring with us for almost a year!</p>
-                            <a href="#" class = "btn btn-outline-secondary"> See Profile</a>
-                        </div>
-                    </div>
+                <div class="col-lg-6">
+                    <h2>Our Mission</h2>
+                    <p>In pre-university studies, students often find it daunting to create portfolios to aid in their university or future job applications.</p>
+                    <p>We want to ease this process and help students find the best activities that are most suited to their passion, and by shortlisting the best activities that is most worth their time and effort.</p>
+                    <p>Ultimately, we hope to create a plotform for seinors to share their experiences, and recommend valuable opportunities to newer batches.</p>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class = "card-img-top" src="/static/images/tutor2.jpg">
-                        <div class="card-body">
-                            <h4 class = "card-title">Quek Hui Ying</h4>
-                            <p class = "card-text"> Hui Ying is an Oxford undergraduate who tutors regularly.</p>
-                            <a href="#" class = "btn btn-outline-secondary"> See Profile</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class = "card-img-top" src="/static/images/tutor3.jpg">
-                        <div class="card-body">
-                            <h4 class = "card-title">Andy Teo</h4>
-                            <p class = "card-text"> Andy Teo has been tutoring underprivileged children for a large part of his life!</p>
-                            <a href="#" class = "btn btn-outline-secondary"> See Profile</a>
-                        </div>
-                    </div>
+                <div class="col-lg-6">
+                    <img class = "img-fluid" src="/static/images/company.jpeg">
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class= "signup-container">
-            <div class="text-containerhome">
-                <h1>Join us Today!</h1>
-                <a href="/signup"><button class = "btn1"> SIGN UP NOW! </button></a>
-            </div>
-        </div>
+    <hr>
 
-        <hr>
-
-        <div class="aboutus" id = "about-us">
-            <div class="container-fluid padding">
-                <div class="row padding">
-                    <div class="col-lg-6">
-                        <h2>Our Mission</h2>
-                        <p>In Singapore’s competitive, meritocratic education system, disadvantaged and underprivileged children who are unable to afford tuition or other enrichment classes may find themselves struggling to keep up with school work and their peers.</p>
-                        <p> We want to help these children by providing a system that will match tutors and tutees. Ultimately, we hope that our website will encourage greater participation and enable more students to forge kinder and more compassionate school communities while simultaneously giving back to society.</p>
+    <div class="connect-container">
+        <div class="container-fluid padding">
+            <div class="row text-center padding">
+                <div class="col-12">
+                    <h2>Connect</h2>
+                    <div class="contact-us-container">
+                        <p>Feel free to contact us at SGlinked@gmail.com for further information.</p>
                     </div>
-
-                    <div class="col-lg-6">
-                        <img class = "img-fluid" src="/static/images/company.jpeg">
-                    </div>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#"><i class = "fab fa-facebook"></i></a>
+                    <a href="#"><i class = "fab fa-twitter"></i></a>
+                    <a href="#"><i class = "fab fa-instagram"></i></a>
+                    <a href="#"><i class = "fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
-
-        <hr>
-
-
-        <div class="connect-container">
-            <div class="container-fluid padding">
-                <div class="row text-center padding">
-                    <div class="col-12">
-                        <h2>Connect</h2>
-                        <div class="contact-us-container">
-                            <p>Feel free to contact us at SGtutor@gmail.com for further information. Alternatively, contact your school representative teacher-in-charge if you have any other questions. </p>
-                        </div>
-                    </div>
-                    <div class="col-12 social padding">
-                        <a href="#"><i class = "fab fa-facebook"></i></a>
-                        <a href="#"><i class = "fab fa-twitter"></i></a>
-                        <a href="#"><i class = "fab fa-instagram"></i></a>
-                        <a href="#"><i class = "fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- </div> -->
-
+    </div>
 {%endblock%}
