@@ -16,7 +16,7 @@ events (List of event dicts)
         <h1>EVENTS</h1>
         <p>Search and filter for events with the search bar. <br><b> click on </b> events that you are interested in to see what's in store! </p>
 
-        <form autocomplete="off" action="/search_profiles" method="POST">
+        <form autocomplete="off" action="/search_events" method="POST" id="form">
             <div class="autocomplete" style="width:300px;">
                 <small id="emailHelp" class="form-text text-muted">Search for a specific event.</small>
                 <input class="form-control" id="nameinput" type="text" placeholder = 'Enter name' name = "name">
@@ -25,13 +25,13 @@ events (List of event dicts)
             <br>
             <div class="autocomplete" style="width:300px;">
                 <small id="emailHelp" class="form-text text-muted">Search for a specific organiser.</small>
-                <input class = "form-control" id="organiserinput" type="text" name="school" placeholder="Enter organiser">
+                <input class = "form-control" id="organiserinput" type="text" name="organiser" placeholder="Enter organiser">
             </div>
             
             <div id="tag-div">
             {% for tag in tags %}
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="tag/{{tag}}" id="defaultCheck1">
+                <input class="form-check-input" type="checkbox" name="tags" value="{{tag}}" id="defaultCheck1" form="form">
                 <label class="form-check-label" for="{{tag}}">
                 {{tag}}
                 </label>

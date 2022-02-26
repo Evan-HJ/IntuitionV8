@@ -44,13 +44,13 @@ class JsonHandler:
 
         result = deepcopy(self.event_list)
         if 'name' in search_dict:
-            result = list(filter(lambda profile: profile['name'] == search_dict['name'], result))
+            result = list(filter(lambda event: event['name'] == search_dict['name'], result))
         
         if 'organiser' in search_dict:
-            result = list(filter(lambda profile: search_dict['organiser'] in profile['organiser'], result))
+            result = list(filter(lambda event: search_dict['organiser'] == event['organiser'], result))
 
         if 'tags' in search_dict:
-            result = list(filter(lambda profile: len(set(search_dict['tags']) & set(profile['tags'])) > 0, result))
+            result = list(filter(lambda event: event['tag'] in search_dict['tags'], result))
 
         return result
 

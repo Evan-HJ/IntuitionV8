@@ -6,7 +6,9 @@ app = Flask(__name__, static_url_path='/static')
 
 json_handler = JsonHandler('events.json', 'profiles.json')
 all_tags = ["Chemistry", "Hackathon",  "Math", "Economics", "Physics"]
-all_schools = ['North Secondary', 'South Secondary', 'East Secondary', 'West Secondary', 'North JC', 'South JC', 'East JC', 'West JC', 'North University', 'South University', 'East University', 'West University', 'Central University', 'Central JC', 'Central Secondary']
+
+all_schools = list(set([school for profile in json_handler.profile_list for school in profile['schools']]))
+print(all_schools)
 all_events = [event['name'] for event in json_handler.event_list]
 all_organisers = [event['organiser'] for event in json_handler.event_list]
 
@@ -25,20 +27,17 @@ def meetings():
 @app.route('/search_profiles', methods=['GET', 'POST'])
 def search_profiles():
     if request.method == 'POST':
-        search_terms = request.form.to_dict()
+        
+        search_terms = request.form.to_dict(flat=False)
         search_dict = {}
         for key, value in search_terms.items():
-            if key.startswith('tag/'):
-                if value == 'on':
-                    if 'tags' not in search_dict:
-                        search_dict['tags'] = [] 
-                    search_dict['tags'].append(key[4:])
-            elif value:
-                search_dict[key] = value
+            if len(value) > 0:
+                if key == 'tags':
+                    search_dict[key ] = value
+                elif value[0]:
+                    search_dict[key] = value[0]
 
         result = json_handler.search_profiles(search_dict=search_dict)
-        print('SEARCH TERMS: ', search_dict)
-        print('RESULT: ', result)
     
         return render_template('search_profiles.html', tags = all_tags, schools=all_schools, search_dict = search_dict, profiles = result)
     else:
@@ -48,20 +47,21 @@ def search_profiles():
 @app.route('/search_events', methods=['GET', 'POST'])
 def search_events():
     if request.method == 'POST':
-        search_terms = request.form.to_dict()
+        search_terms = request.form.to_dict(flat=False)
         search_dict = {}
         for key, value in search_terms.items():
-            if key.startswith('tag/'):
-                if value == 'on':
-                    if 'tags' not in search_dict:
-                        search_dict['tags'] = [] 
-                    search_dict['tags'].append(key[4:])
-            elif value:
-                search_dict[key] = value
-
+            if len(value) > 0:
+                if key == 'tags':
+                    search_dict[key ] = value
+                elif value[0]:
+                    search_dict[key] = value[0]
         result = json_handler.search_events(search_dict=search_dict)
-        print('SEARCH TERMS: ', search_dict)
+
+        
+        print('SEARCH TERMS', search_terms)
+        print('SEARCH DICT', search_dict)
         print('RESULT: ', result)
+        
     
         return render_template('search_events.html', tags = all_tags, all_events=all_events, organisers=all_organisers, search_dict = search_dict, events = result)
     else:
