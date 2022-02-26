@@ -43,5 +43,22 @@ class JsonHandler:
 
         return result
 
+    def search_events(self, search_dict):
+        '''
+        search_dict may contain name, organiser or tags
+        '''
+
+        result = deepcopy(self.event_list)
+        if 'name' in search_dict:
+            result = list(filter(lambda profile: profile['name'] == search_dict['name'], result))
+        
+        if 'organiser' in search_dict:
+            result = list(filter(lambda profile: search_dict['organiser'] in profile['organiser'], result))
+
+        if 'tags' in search_dict:
+            result = list(filter(lambda profile: len(set(search_dict['tags']) & set(profile['tags'])) > 0, result))
+
+        return result
+
 
     

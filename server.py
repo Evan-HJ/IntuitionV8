@@ -20,7 +20,7 @@ def meetings():
     return render_template('meetings.html')
 
 @app.route('/search_profiles', methods=['GET', 'POST'])
-def search():
+def search_profiles():
     if request.method == 'POST':
         search_terms = request.form.to_dict()
         search_dict = {}
@@ -37,9 +37,33 @@ def search():
         print('SEARCH TERMS: ', search_dict)
         print('RESULT: ', result)
     
-        return render_template('search_profile.html', tags = all_tags, search_dict = search_dict, profiles = result)
+        return render_template('search_profiles.html', tags = all_tags, search_dict = search_dict, profiles = result)
     else:
-        return render_template('search_profile.html', tags = all_tags)
+        return render_template('search_profiles.html', tags = all_tags)
+
+
+@app.route('/search_events', methods=['GET', 'POST'])
+def search_events():
+    if request.method == 'POST':
+        search_terms = request.form.to_dict()
+        search_dict = {}
+        for key, value in search_terms.items():
+            if key.startswith('tag/'):
+                if value == 'on':
+                    if 'tags' not in search_dict:
+                        search_dict['tags'] = [] 
+                    search_dict['tags'].append(key[4:])
+            elif value:
+                search_dict[key] = value
+
+        result = json_handler.search_events(search_dict=search_dict)
+        print('SEARCH TERMS: ', search_dict)
+        print('RESULT: ', result)
+    
+        return render_template('search_events.html', tags = all_tags, search_dict = search_dict, events = result)
+    else:
+        return render_template('search_events.html', tags = all_tags)
+
 # @app.route('/profile/tutor/<string:usr>')  # Username
 # def showTutorProfile(usr):  # DONE
 #     usr_doc = dbscript.getTutorDoc({
