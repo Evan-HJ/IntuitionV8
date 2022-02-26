@@ -1,3 +1,21 @@
 #search-box {
 	padding: 10vh 20vw;
 }
+
+#profilelink {
+	padding-top: 15px;
+	text-align: center;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+#profilelink2 {
+	padding-top: 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+	border-left: 0px;
+}
+
+#profiles-box {
+	margin-bottom: 10vh;
+}

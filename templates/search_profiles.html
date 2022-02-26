@@ -58,7 +58,37 @@ profiles (List of profile dicts)
         </form>
     </div>
 
-    <div class = "meetings-container">
+    <div class="container-fluid padding" id = "profiles-box">
+        <p> Search Complete. There are <strong> {{profiles | length}}</strong>  results. </p>
+
+        {% for profile in profiles %}
+            <div class="row justify-content-md-center padding" id = "profilebox">
+                <div class="col-sm-3" id = "profilelink">
+                    <h2><a href = "/profile/{{profile['name']}}"> {{profile['name']}}  </a></h2>
+                </div>
+
+                <div class="col-sm-3" id = "profilelink2">
+                    <label> Education </label>
+                    <ul>
+                        {% for school in profile['schools'] %}
+                        <li> {{school}}</li>
+                        {%endfor%}
+                    </ul>
+                </div> 
+
+                <div class="col-sm-3" id = "profilelink2">
+                    <label> Interests </label>
+                    <ul>
+                        {% for tag in profile['tags']%}
+                        <li> {{tag}}</li>
+                        {%endfor%}
+                    </ul>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+
+    <!-- <div class = "meetings-container">
         <p> Search Complete. There are <strong> {{profiles | length}}</strong>  results. </p>
 
         {% for profile in profiles %}
@@ -84,7 +114,7 @@ profiles (List of profile dicts)
             </div>
         {%endfor%}
 
-    </div>
+    </div> -->
 
 
 {%endblock%}
