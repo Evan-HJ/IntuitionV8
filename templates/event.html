@@ -1,0 +1,50 @@
+<!-- NOTE:
+Jinja variables:
+event
+-->
+{%extends 'layout.html'%}
+
+{%block style%}
+<link rel="stylesheet" type="text/css" href="/static/event.css">
+{%endblock%}
+
+{%block body%}
+
+<div class = "event-content">
+
+	<div class = event-icon-box>
+		<!-- {%if session.get('type') == 'tutee'%}
+			<h2>Tutee</h2>
+		{%else%}
+			<h2>Tutor</h2>
+		{%endif%} -->
+
+		<h3>{{event['name']}}</h3>
+
+	</div>
+
+	<div class = "event-info">
+		<p>
+			Organiser: <b style = "text-transform:uppercase"> {{event['organiser']}} </b> <br>
+		</p>
+
+        <label> Tags </label>
+        <ul>
+            {% for tag in event['tags']%}
+            <li> {{tag}}</li>
+            {%endfor%}
+        </ul>    
+
+        <label> Participants </label>
+        <ul>
+            {% for participant in event['participants'] %}
+            <li> <a href="/profile/{{participant}}"> {{participant}} </a></li>
+            {%endfor%}
+        </ul>
+
+        
+	</div>
+
+</div>
+
+{%endblock%}

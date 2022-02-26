@@ -3,7 +3,7 @@
         "id": 123,
         "organiser": "NTU",
         "name": "iNTUition",
-        "participants": [122],
+        "participants": ["Jia Hng"],
         "rating": 3,
         "tags": ["A"]
     }

@@ -64,27 +64,19 @@ def search_events():
     else:
         return render_template('search_events.html', tags = all_tags)
 
-# @app.route('/profile/tutor/<string:usr>')  # Username
-# def showTutorProfile(usr):  # DONE
-#     usr_doc = dbscript.getTutorDoc({
-#         'usrname': usr
-#     })
 
-#     return render_template('profile.html', usr_doc=usr_doc, type='tutor')
+@app.route('/profile/<string:name>')  # Username
+def showProfile(name):  # DONE
+    profile = json_handler.get_profile_by_name(name)
+
+    return render_template('profile.html', profile=profile)
 
 
-# @app.route('/profile/tutee/<string:usr>')  # Username
-# def showTuteeProfile(usr):  # DONE
-#     # NOTE: If usr not found, return home and flash
-#     usr_doc = dbscript.getTuteeDoc({
-#         'usrname': usr
-#     })
+@app.route('/event/<string:name>')  # Username
+def showEvent(name):  # DONE
+    event = json_handler.get_event_by_name(name)
 
-#     if usr_doc:
-#         return render_template('profile.html', usr_doc=usr_doc, type='tutee')
-#     else:
-#         flash("User not found", "error")
-#         return redirect(url_for('home'))
+    return render_template('event.html', event=event)
 
 if (__name__ == '__main__'):
     app.run(debug=True)
