@@ -5,7 +5,7 @@ from json_handler import JsonHandler
 app = Flask(__name__, static_url_path='/static')
 
 json_handler = JsonHandler('events.json', 'profiles.json')
-all_tags = ['A', 'B']
+all_tags = ["Chemistry", "Hackathon",  "Math", "Economics", "Physics"]
 
 @app.route('/', methods=['GET'])
 def home():
