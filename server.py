@@ -9,6 +9,10 @@ app = Flask(__name__, static_url_path='/static')
 def home():
     return render_template('home.html')
     
+@app.route('/backup', methods=['GET'])
+def backup():
+    return render_template('backup home.html')
+
 @app.route('/meetings', methods=['GET'])
 def meetings():
     return render_template('meetings.html')
