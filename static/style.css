@@ -129,7 +129,7 @@ button {
 }
 
 .btn1 {
-	transition: color: 300ms ease-in-out;
+	transition: 300ms ease-in-out;
 	z-index: 1;
 }
 
