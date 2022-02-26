@@ -41,27 +41,14 @@
                     <li class = "nav-item">
                         <a class = "nav-link" href="/">Home</a>
                     </li>
-
-                    {%if not session.get('usr')%}
-                        <li class = "nav-item">
-                            <a class = "nav-link" href="/login">Login</a>
-                        </li>
-                    {%else%}
-                        <li class = "nav-item">
-                            <a class = "nav-link" href="/logout">Logout</a>
-                        </li>
-                    {%endif%}
-                    <li class = "nav-item">
-                        <a class = "nav-link" href="/signup">Sign Up</a>
-                    </li>
                     <li class = "nav-item">
                         <a class = "nav-link" href="/myprofile">My Profile</a>
                     </li>
                     <li class = "nav-item">
-                        <a class = "nav-link" href="/events">Events</a>
+                        <a class = "nav-link" href="/search_events">Events</a>
                     </li>
                     <li class = "nav-item">
-                        <a class = "nav-link" href="/users">Users</a>
+                        <a class = "nav-link" href="/search_profiles">Users</a>
                     </li>
                 </ul>
             </div>
