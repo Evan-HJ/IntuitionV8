@@ -1,44 +1,53 @@
+
+
 <!-- NOTE:
 Jinja variables:
-event
+profile
 -->
 {%extends 'layout.html'%}
 
 {%block style%}
-<link rel="stylesheet" type="text/css" href="/static/event.css">
+<link rel="stylesheet" type="text/css" href="/static/profile.css">
 {%endblock%}
 
 {%block body%}
 
-<div class = "event-content">
+<div class="container-fluid padding">
+	<div class="row padding" id = "userprofile">
+		<div class="col-lg">
+			<h1 class="text-center">{{event['name']}}</h1>
+			<p class="text-center">
+				by <b style = "text-transform:uppercase"> {{event['organiser']}} </b> <br>
+                Category: {{event['tag']}}
+			</p>
 
-	<div class = event-icon-box>
-		<h3>{{event['name']}}</h3>
+			<p class="text-secondary font-weight-bold"> </p>
 
+			<p class="text-secondary font-weight-bold">Participants</p>
+			<div class="list-group">
+				{% for name in event['participants'] %}
+				<a href="/profile/{{name}}" class="list-group-item list-group-item-action active">
+					{{name}}
+				</a>
+				{%endfor%}
+			</div>
+		</div>
 	</div>
-
-	<div class = "event-info">
-		<p>
-			Organiser: <b style = "text-transform:uppercase"> {{event['organiser']}} </b> <br>
-		</p>
-
-        <label> Tags </label>
-        <ul>
-            {% for tag in event['tags']%}
-            <li> {{tag}}</li>
-            {%endfor%}
-        </ul>    
-
-        <label> Participants </label>
-        <ul>
-            {% for participant in event['participants'] %}
-            <li> <a href="/profile/{{participant}}"> {{participant}} </a></li>
-            {%endfor%}
-        </ul>
-
-        
-	</div>
-
 </div>
 
+	<!-- <div class = "profile-meetings">
+		TODO: Print list of meetings
+
+	</div>
+
+	<div class = "comments-page">
+
+	</div>
+
+	{%for key in usr_doc%}
+	  	{{ key }}  {{ usr_doc[key] }}
+	 	 <br>
+	{% endfor %} -->
+
 {%endblock%}
+
