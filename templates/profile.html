@@ -1,0 +1,53 @@
+<!-- NOTE:
+Jinja variables:
+usr_doc
+type (tutor or tutee)
+-->
+{%extends 'layout.html'%}
+
+{%block style%}
+<link rel="stylesheet" type="text/css" href="/static/profile.css">
+{%endblock%}
+
+{%block body%}
+
+<div class = "profile-content">
+
+	<div class = profile-icon-box>
+		{%if session.get('type') == 'tutee'%}
+			<h2>Tutee</h2>
+		{%else%}
+			<h2>Tutor</h2>
+		{%endif%}
+
+		<h3>{{usr_doc['usrname']}}</h3>
+		<div class = "profile-icon">
+			<img src="/static/images/icon/{{usr_doc['iconID']}}.svg">
+		</div>
+	</div>
+
+	<div class = "profile-info">
+		<p>
+			Name: <b style = "text-transform:uppercase"> {{usr_doc['name']}} </b> <br>
+			Age: <b> {{usr_doc['age']}} </b> <br>
+			School: <b> {{usr_doc['school']}} </b> <br>
+		</p>
+	</div>
+
+	<!-- <div class = "profile-meetings">
+		TODO: Print list of meetings
+
+	</div>
+
+	<div class = "comments-page">
+
+	</div>
+
+	{%for key in usr_doc%}
+	  	{{ key }}  {{ usr_doc[key] }}
+	 	 <br>
+	{% endfor %} -->
+
+</div>
+
+{%endblock%}

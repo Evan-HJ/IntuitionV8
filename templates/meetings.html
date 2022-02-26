@@ -1,0 +1,81 @@
+<!-- NOTE:
+Jinja variables:
+usr_doc
+meetings (List of meeting docs)
+-->
+{%extends 'layout.html'%}
+
+{%block style%}
+<link rel="stylesheet" type="text/css" href="../static/meetings.css">
+{%endblock%}
+{%block body%}
+
+    <div class="intro">
+        <div class="text-container">
+            <h1>Your Registered Meetings</h1>
+        </div>
+    </div>
+
+<!--     <div class = "text-container" id = "meetings-intro">
+        <p>Below are the meetings you have currently registered for.<br> <br>
+        Please take note of the times and be ready to join the meetings on time! It never hurts to be a little early!</p>
+    </div> -->
+
+    <div class = "meetings-container">
+        <p> You currently have <strong> {{meetings|length}} </strong>  meetings. </p>
+
+
+        {% for meeting in meetings %}
+            <div class = "meetings-box">
+                <div class="subject-image">
+
+                    {%if meeting['subject'] == 'English'%}
+                        <img src="/static/images/English.svg">
+                    {%elif meeting['subject'] == 'Math' %}
+                        <img src="/static/images/math.svg">
+                    {%elif meeting['subject'] == 'Science' %}
+                        <img src="/static/images/Science.svg">
+                    {%elif meeting['subject'] == 'Chinese' %}
+                        <img src="/static/images/Chinese.svg">
+                    {%endif%}
+                </div>
+
+                <div class="meetings-details">
+                    <h2>Meeting Name: <a href = "/register/{{meeting['_id']}}"> {{meeting['title']}}  </a></h2>
+                    <p>Tutor: <b> {{meeting['tutorusrname']}} </b> <br>
+                    Subject: <b> {{meeting['subject']}} </b> <br>
+                    Level: <b> P{{meeting['level']}} </b> <br>
+                    Number Registered: {{meeting['tuteeID'] | length}}</p>
+
+                    <p> Meeting Date: {{meeting['date']}} <br>
+                    Meeting Start: {{meeting['start']}} <br>
+                    Meeting End: {{meeting['end']}}
+                    </p>
+
+                </div>
+                <div class="registered-box">
+                    {% if session.get('type') == 'tutee' %}
+                        <h3> Registered </h3>
+                        <img src="/static/images/tick.svg" alt="">
+                    {% else %}
+                        <h4>Meeting Coming Soon</h4>
+                        <img src="/static/images/clock.svg" alt="">
+                    {% endif %}
+                </div>
+            </div>
+        {%endfor%}
+
+    </div>
+
+    <hr/>
+
+    <div class="return-buttons">
+        {%if session.get('type') == 'tutor'%}
+            <a href = "/host"> <button class="btn1"> Organise a New Session!</button> </a>
+        {%else%}
+            <h3>Want to register for a new session?</h3>
+            <a href = "/search"> <button class="btn1"> Search for meetings</button> </a>
+        {%endif%}
+    </div>
+
+{%endblock%}

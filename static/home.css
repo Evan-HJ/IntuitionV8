@@ -1,0 +1,125 @@
+
+
+.content {
+    /* padding: 0; */
+    margin-bottom: 40px;
+    height: 100%;
+    /* color: #000; */
+    /* text-align: center;
+    justify-content: center; */
+}
+
+
+.carousel-inner {
+    height: 70vh;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+.carousel-caption {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+}
+.carousel-caption h1 {
+    font-size: 500%;
+    text-shadow: 1px 1px 15px #000;
+}
+.carousel-caption h3 {
+    font-size: 2--%;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 10px;
+}
+.jumbotron {
+    padding: 40px;
+    padding-right: 100px;
+}
+.padding {
+    padding-bottom: 16px;
+}
+.welcome {
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 32px;
+}
+.welcome hr {
+    border-top: 2px solid #b4b4b4;
+    width: 95%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.subject {
+    margin-bottom: 20px;
+}
+
+#fixed {
+    background: linear-gradient(rgba(26,26,26,0.3),rgba(26,26,26,0.3)),url("../static/images/repetition.jpg");
+    height: 600px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+
+
+    padding-top: 300px;
+    text-align: center;
+    color: white;
+}
+
+figure {
+    margin: 0;
+    margin-bottom: 50px;
+}
+
+.text-container {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.text-containerhome {
+    margin: 10vh auto;
+    /* padding: 0; */
+    width: 80%;
+    text-align: center;
+}
+
+.text-containerhome h1 {
+    text-shadow: 1px 1px 10px #000;
+}
+
+.card {
+    height: 500px;
+}
+
+.card-img-top {
+    height: 300px;
+}
+
+.signup-container {
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(rgba(26,26,26,0.3),rgba(26,26,26,0.3)),url("../static/images/home-videocall.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    color: #FFFFFF;
+    padding: 10vh 10vw;
+    margin-bottom: 100px;
+}
+
+.aboutus {
+    margin: 20px 30px;
+    margin-bottom: 70px;
+}
+
+.connect-container {
+    margin-bottom: 70px;
+}
+.contact-us-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,32 @@
+<!-- TODO:
+  Check if login, add flashes
+
+ -->
+
+ {%extends 'layoutforms.html'%}
+
+ {%block title%}
+    Tutor Login
+ {%endblock%}
+
+ {%block body%}
+    <div class="login-container">
+        <div class="login-box" id = "tutorlogin">
+            <h1>Tutor - Login</h1>
+            <form action="/tutor/login" method="POST">
+                <div class="textbox">
+                    <img src="../static/images/user.svg" alt="">
+                    <input type="username" name="usrname" autocomplete="off" placeholder="Username">
+                </div>
+
+                <div class="textbox">
+                    <img src="../static/images/password.svg" alt="">
+                    <input type="password" name="pwd" placeholder="Password">
+                </div>
+
+                <input class = "btn2" type="submit" value="Log in">
+            </form>
+        </div>
+
+    </div>
+{%endblock%}

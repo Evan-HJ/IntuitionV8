@@ -1,0 +1,41 @@
+<!-- TODO:
+  Form to send to /tutee/signup
+-->
+{%extends 'layoutforms.html'%}
+
+{%block title%}
+   Tutor Login
+{%endblock%}
+
+{%block body%}
+    <div class="signup-container">
+        <div class="login-box">
+            <h1>Tutee - Sign up</h1>
+            <form action="/tutee/signup" method="POST">
+                <div class="textbox">
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+
+                <div class="textbox">
+                    <input type="username" name="usrname" placeholder="Username">
+                </div>
+
+                <div class="textbox">
+                    <input type="password" name="pwd" placeholder="Password">
+                </div>
+
+                <div class="textbox">
+                    <input type="number" name="age" placeholder="Age">
+                </div>
+                <div class="textbox">
+                    <input type="text" name="school" placeholder="School">
+                </div>
+
+
+                <input class = "btn2" type="submit" value="Sign up">
+            </form>
+        </div>
+
+    </div>
+
+{%endblock%}

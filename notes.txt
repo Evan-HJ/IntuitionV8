@@ -1,0 +1,40 @@
+All session variables: (session.get(varname))
+loggedin
+type
+usr (_id)
+usrname
+
+Tutees Docs:
+name, usrname, age, school,
+pwd (Hash), meetings (List of meeting ids), iconID
+
+Tutors Docs:
+name, usrname, age, school,
+pwd (Hash), meetings (List of meeting ids), subjects (List), comments (List), iconID
+
+Meeting Docs:
+tuteeID (List), tutorID, start, end, subject, level, link
+
+All routes:
+
+/ : about.html
+/logout: Redirects to /, clears session
+
+/tutor/login (GET): tutorlogin.html
+/tutor/login (POST): Redirects to / (Success) or /tutor/login (Fail)
+Same for tutee/login
+
+/tutor/signup (GET): tutorsignup.html
+/tutor/signup (POST): Redirects to / (Success) or /tutor/signup (Fail)
+Same for tutee/signup
+
+/profile/tutor/(usrID): profile.html
+/profile/tutee/(usrID): profile.html
+
+/myprofile: Redirects to /profile/... (Success) or / (Fail)
+
+/meetings: meetings.html
+
+/host
+/register
+/search

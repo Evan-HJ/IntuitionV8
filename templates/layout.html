@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>{%block title%} {%endblock%}</title>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+                {% for category, message in messages %}
+                <p class=flashes-{{category}}> {{ message }} </p>
+                {% endfor %}
+
+        {% endif %}
+    {% endwith %}
+
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    {%block style%} {%endblock%}
+
+  </head>
+
+
+  <body>
+
+    <!-- NAVIGATION -->
+    <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class = "container-fluid">
+            <a class = "navbar-brand" href = "#"> <img src="/static/images/logo.svg" width = 60px> </a>
+            <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target="#navbarResponsive">
+                <span class = "navbar-toggler-icon"></span>
+
+            </button>
+            <div class = "collapse navbar-collapse" id = "navbarResponsive">
+                <ul class = "navbar-nav ml-auto">
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/">Home</a>
+                    </li>
+
+                    {%if not session.get('usr')%}
+                        <li class = "nav-item">
+                            <a class = "nav-link" href="/login">Login</a>
+                        </li>
+                    {%else%}
+                        <li class = "nav-item">
+                            <a class = "nav-link" href="/logout">Logout</a>
+                        </li>
+                    {%endif%}
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/signup">Sign Up</a>
+                    </li>
+
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/myprofile">My Profile</a>
+                    </li>
+
+                    <li class = "nav-item">
+                        <a class = "nav-link" href="/meetings">My Meetings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    {%block body%}
+
+    {%endblock%}
+
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="/static/images/logo-blank.svg" width = 57px>
+                    <hr class = "light">
+                    <p>123-456-789</p>
+                    <p>SGtutor@gmail.com</p>
+                    <p>Raffles Institution Lane</p>
+                    <p>Singapore</p>
+                </div>
+
+                <div class="col-md-4">
+                    <hr class = "light">
+                    <h5>School Partners</h5>
+                    <hr class = "light">
+                    <p>Raffles Institution</p>
+                    <p>Hwa Chong Institution</p>
+                    <p>River Valley High School</p>
+                    <p>Ministry of Education, Singapore</p>
+                </div>
+
+                <div class="col-md-4">
+                    <hr class = "light">
+                    <h5>Links</h5>
+                    <hr class = "light">
+
+                    <ul class = "list-unstyled">
+                        <li><a href = "/">Home</a> </li>
+                        <li><a href = "/">Copyright</a> </li>
+                        <li><a href = "/">Privacy Policy</a> </li>
+                        <li><a href = "/">Contact Us</a> </li>
+                        <li><a href = "/">Support Us</a> </li>
+                    </ul>
+                </div>
+
+                <div class="col-12">
+                    <hr class = "light-100">
+                    <h5>&copy;TutorSG. All rights reserved.</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

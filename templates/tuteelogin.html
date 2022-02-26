@@ -1,0 +1,32 @@
+<!-- TODO:
+  Form to send to /tutee/login
+  Check if loggedin
+-->
+
+{%extends 'layoutforms.html'%}
+
+{%block title%}
+    Tutee Login
+{%endblock%}
+
+{%block body%}
+<div class="login-container">
+    <div class="login-box">
+        <h1>Tutee - Login</h1>
+        <form action="/tutee/login" method="POST">
+            <div class="textbox">
+                <img src="../static/images/user.svg" alt="">
+                <input type="username" name="usrname" autocomplete="off" placeholder="Username">
+            </div>
+
+            <div class="textbox">
+                <img src="../static/images/password.svg" alt="">
+                <input type="password" name="pwd" placeholder="Password">
+            </div>
+
+            <input class = "btn2" type="submit" value="Log in">
+        </form>
+    </div>
+
+</div>
+{%endblock%}
