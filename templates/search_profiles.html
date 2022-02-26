@@ -25,7 +25,8 @@ profiles (List of profile dicts)
                 <small id="emailHelp" class="form-text text-muted">Search for a specific school.</small>
                 <input class = "form-control" id="myInput" type="text" name="school" placeholder="Enter school">
             </div>
-
+            
+            <div  id="tag-div">
             {% for tag in tags %}
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="tag/{{tag}}" id="defaultCheck1">
@@ -33,7 +34,9 @@ profiles (List of profile dicts)
                   {{tag}}
                 </label>
             </div>
+            
             {% endfor %}
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -27,7 +27,8 @@ events (List of event dicts)
                 <small id="emailHelp" class="form-text text-muted">Search for a specific organiser.</small>
                 <input class = "form-control" id="organiserinput" type="text" name="school" placeholder="Enter organiser">
             </div>
-
+            
+            <div id="tag-div">
             {% for tag in tags %}
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="tag/{{tag}}" id="defaultCheck1">
@@ -36,6 +37,7 @@ events (List of event dicts)
                 </label>
             </div>
             {% endfor %}
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
