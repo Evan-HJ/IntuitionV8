@@ -20,9 +20,6 @@ def home():
 def backup():
     return render_template('backup home.html')
 
-@app.route('/meetings', methods=['GET'])
-def meetings():
-    return render_template('meetings.html')
 
 @app.route('/search_profiles', methods=['GET', 'POST'])
 def search_profiles():
