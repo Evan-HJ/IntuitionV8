@@ -1,10 +1,37 @@
 [
     {
-        "id": 123,
         "organiser": "NTU",
         "name": "iNTUition",
-        "participants": ["Jia Hng"],
-        "rating": 3,
-        "tags": ["A"]
+        "participants": ["Alice", "Bob"],
+        "rating": 5,
+        "tag": "Hackathon"
+    },
+    {
+        "organiser": "Math Department",
+        "name": "Math Olympiad",
+        "participants": ["Bob", "Charlie"],
+        "rating": 4,
+        "tag": "Math"
+    },
+    {
+        "organiser": "Physics Department",
+        "name": "Physics Olympiad",
+        "participants": ["Dave", "Eve"],
+        "rating": 4,
+        "tag": "Physics"
+    },
+    {
+        "organiser": "Chemistry Department",
+        "name": "Chemistry Olympiad",
+        "participants": ["Alice", "Eve"],
+        "rating": 4.5,
+        "tag": "Chemistry"
+    },
+    {
+        "organiser": "Economics Department",
+        "name": "Economics Olympiad",
+        "participants": ["Charlie", "Dave"],
+        "rating": 3.5,
+        "tag": "Economics"
     }
 ]

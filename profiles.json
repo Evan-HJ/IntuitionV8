@@ -1,9 +1,32 @@
 [
     {
-        "id": 122,
-        "name": "Jia Hng",
-        "schools": ["Raffles Institution"],
-        "tags": ["A"],
-        "events": ["iNTUition"]
+        "name": "Alice",
+        "schools": ["North JC", "South Secondary"],
+        "tags": ["Chemistry", "Hackathon"],
+        "events": ["iNTUition", "Chemistry Olympiad"]
+    },
+    {
+        "name": "Bob",
+        "schools": ["South JC", "East Secondary"],
+        "tags": ["Hackathon", "Math"],
+        "events": ["iNTUition", "Math Olympiad"]
+    },
+    {
+        "name": "Charlie",
+        "schools": ["East JC", "West Secondary"],
+        "tags": ["Math", "Economics"],
+        "events": ["Math Olympiad", "Economics Olympiad"]
+    },
+    {
+        "name": "Dave",
+        "schools": ["West JC", "Central Secondary"],
+        "tags": ["Economics", "Physics"],
+        "events": ["Physics Olympiad", "Economics Olympiad"]
+    },
+    {
+        "name": "Eve",
+        "schools": ["Central University", "North JC", "Singapore Secondary"],
+        "tags": ["Physics", "Chemistry"],
+        "events": ["Physics Olympiad", "Chemistry Olympiad"]
     }
 ]
