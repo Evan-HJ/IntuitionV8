@@ -1,0 +1,10 @@
+[
+    {
+        "id": 123,
+        "organiser": "NTU",
+        "name": "iNTUition",
+        "participants": [122],
+        "rating": 3,
+        "tags": ["A"]
+    }
+]

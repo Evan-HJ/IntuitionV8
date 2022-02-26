@@ -1,0 +1,72 @@
+<!-- NOTE:
+Jinja variables:
+tags
+profiles (List of profile dicts)
+-->
+
+{%extends 'layout.html'%}
+
+{%block style%}
+<link rel="stylesheet" type="text/css" href="../static/meetings.css">
+{%endblock%}
+
+{%block body%}
+
+    <div class = "search-container">
+        <div class="search-text">
+            <p>Search and filter for people with the search bar. <br><br> <b> CLICK ON </b> people that you are interested in to see what they have done! </p>
+        </div>
+
+        <form class="search-box" action="/search_profiles" method="POST">
+            <div class="textbox" id = "search-query">
+                <label for="name"> Name: </label>
+                <input type="text" id ="name" placeholder = '{{name}}' name = "name">
+            </div>
+            <div class="textbox" id = "search-query">
+                <label for="school"> School: </label>
+                <input type="text" id = 'school' placeholder = '{{school}}' name = "school">
+            </div>
+            
+            <div>
+                {% for tag in tags %}
+                    <input type="checkbox" name="tag/{{tag}}"> 
+                    <label for="{{tag}}"> {{tag}} </label>
+                {% endfor %}
+            </div>
+
+
+            <input type = 'submit' class = "btn btn-outline-light btn-lg" value = 'Search'>
+        </form>
+    </div>
+
+
+    <div class = "meetings-container">
+        <p> Search Complete. There are <strong> {{profiles | length}}</strong>  results. </p>
+
+        {% for profile in profiles %}
+            <div class = "profiles-box">
+                <div class="meetings-details">
+                    <h2>Name: <a href = "/profile/{{profile['id']}}"> {{profile['name']}}  </a></h2>
+
+                    <label> Education </label>
+                    <ul>
+                        {% for school in profile['schools'] %}
+                        <li> {{school}}</li>
+                        {%endfor%}
+                    </ul>
+
+                    <label> Interests </label>
+                    <ul>
+                        {% for tag in profile['tags']%}
+                        <li> {{tag}}</li>
+                        {%endfor%}
+                    </ul>               
+                </div>
+
+            </div>
+        {%endfor%}
+
+    </div>
+
+
+{%endblock%}
