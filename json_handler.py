@@ -10,21 +10,15 @@ class JsonHandler:
         self.profile_list = json.load(open(self.profile_path, 'rb'))
         self.event_list = json.load(open(self.event_path, 'rb'))
     
-    def get_event_by_id(self, id):
+    def get_event_by_name(self, name):
         for event in self.event_list:
-            if event['id'] == id:
+            if event['name'] == name:
                 return event
 
-    def get_profile_by_id(self, id):
+    def get_profile_by_name(self, name):
         for profile in self.profile_list:
-            if profile['id'] == id:
+            if profile['name'] == name:
                 return profile
-
-    def get_event_by_tag(self, tag):
-        return list(filter(lambda event: tag in event['tags'], self.event_list))
-
-    def get_profile_by_tag(self, tag):
-        return list(filter(lambda profile: tag in profile['tags'], self.profile_list))
 
     def search_profiles(self, search_dict):
         '''

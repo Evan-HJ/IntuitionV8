@@ -1,7 +1,6 @@
 <!-- NOTE:
 Jinja variables:
-usr_doc
-type (tutor or tutee)
+profile
 -->
 {%extends 'layout.html'%}
 
@@ -14,24 +13,40 @@ type (tutor or tutee)
 <div class = "profile-content">
 
 	<div class = profile-icon-box>
-		{%if session.get('type') == 'tutee'%}
+		<!-- {%if session.get('type') == 'tutee'%}
 			<h2>Tutee</h2>
 		{%else%}
 			<h2>Tutor</h2>
-		{%endif%}
+		{%endif%} -->
 
-		<h3>{{usr_doc['usrname']}}</h3>
-		<div class = "profile-icon">
-			<img src="/static/images/icon/{{usr_doc['iconID']}}.svg">
-		</div>
+		<h3>{{profile['name']}}</h3>
+
 	</div>
 
 	<div class = "profile-info">
 		<p>
-			Name: <b style = "text-transform:uppercase"> {{usr_doc['name']}} </b> <br>
-			Age: <b> {{usr_doc['age']}} </b> <br>
-			School: <b> {{usr_doc['school']}} </b> <br>
+			Name: <b style = "text-transform:uppercase"> {{profile['name']}} </b> <br>
 		</p>
+        <label> Education </label>
+        <ul>
+            {% for school in profile['schools'] %}
+            <li> {{school}}</li>
+            {%endfor%}
+        </ul>
+
+        <label> Interests </label>
+        <ul>
+            {% for tag in profile['tags']%}
+            <li> {{tag}}</li>
+            {%endfor%}
+        </ul>  
+
+        <label> Events </label>
+        <ul>
+            {% for event in profile['events'] %}
+            <li> <a href="/event/{{event}}"> {{event}} </a></li>
+            {%endfor%}
+        </ul>
 	</div>
 
 	<!-- <div class = "profile-meetings">
