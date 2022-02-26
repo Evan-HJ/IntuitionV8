@@ -1,2 +1,2 @@
 # IntuitionV8
-Project for IntutionV8 Hackathon
+Project for IntuitionV8 Hackathon
