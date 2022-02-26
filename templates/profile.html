@@ -10,44 +10,38 @@ profile
 
 {%block body%}
 
-<div class = "profile-content">
+<div class="container-fluid padding">
+	<div class="row padding" id = "userprofile">
+		<div class="col-lg">
+			<h1 class="text-center">{{profile['name']}}</h1>
+			<p class="text-center">
+				Name: <b style = "text-transform:uppercase"> {{profile['name']}} </b> <br>
+			</p>
+			<p class="font-weight-bold">Education</p>
+			<ul>
+				{% for school in profile['schools'] %}
+				<li> {{school}}</li>
+				{%endfor%}
+			</ul>
+			
+			<p class="text-secondary font-weight-bold">Interests</p>
+			<ul>
+				{% for tag in profile['tags']%}
+				<li> {{tag}}</li>
+				{%endfor%}
+			</ul>
 
-	<div class = profile-icon-box>
-		<!-- {%if session.get('type') == 'tutee'%}
-			<h2>Tutee</h2>
-		{%else%}
-			<h2>Tutor</h2>
-		{%endif%} -->
-
-		<h3>{{profile['name']}}</h3>
-
+			<p class="text-secondary font-weight-bold">Events</p>
+			<div class="list-group">
+				{% for event in profile['events'] %}
+				<a href="/event/{{event}}" class="list-group-item list-group-item-action active">
+					{{event}}
+				</a>
+				{%endfor%}
+			</div>
+		</div>
 	</div>
-
-	<div class = "profile-info">
-		<p>
-			Name: <b style = "text-transform:uppercase"> {{profile['name']}} </b> <br>
-		</p>
-        <label> Education </label>
-        <ul>
-            {% for school in profile['schools'] %}
-            <li> {{school}}</li>
-            {%endfor%}
-        </ul>
-
-        <label> Interests </label>
-        <ul>
-            {% for tag in profile['tags']%}
-            <li> {{tag}}</li>
-            {%endfor%}
-        </ul>  
-
-        <label> Events </label>
-        <ul>
-            {% for event in profile['events'] %}
-            <li> <a href="/event/{{event}}"> {{event}} </a></li>
-            {%endfor%}
-        </ul>
-	</div>
+</div>
 
 	<!-- <div class = "profile-meetings">
 		TODO: Print list of meetings
@@ -62,7 +56,5 @@ profile
 	  	{{ key }}  {{ usr_doc[key] }}
 	 	 <br>
 	{% endfor %} -->
-
-</div>
 
 {%endblock%}
