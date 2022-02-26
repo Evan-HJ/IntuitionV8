@@ -107,7 +107,6 @@ profiles (List of profile dicts)
 <script src="../static/script.js"></script>
 <script>
 /*Pass in list of school names*/
-var schools = ['North Secondary', 'South Secondary', 'East Secondary', 'West Secondary', 'North JC', 'South JC', 'East JC', 'West JC', 'North University', 'South University', 'East University', 'West University', 'Central University', 'Central JC', 'Central Secondary'];
-autocomplete(document.getElementById("myInput"), schools);
+autocomplete(document.getElementById("myInput"), {{schools|safe}});
 </script>
 {%endblock%}

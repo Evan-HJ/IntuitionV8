@@ -6,6 +6,9 @@ app = Flask(__name__, static_url_path='/static')
 
 json_handler = JsonHandler('events.json', 'profiles.json')
 all_tags = ["Chemistry", "Hackathon",  "Math", "Economics", "Physics"]
+all_schools = ['North Secondary', 'South Secondary', 'East Secondary', 'West Secondary', 'North JC', 'South JC', 'East JC', 'West JC', 'North University', 'South University', 'East University', 'West University', 'Central University', 'Central JC', 'Central Secondary']
+all_events = [event['name'] for event in json_handler.event_list]
+all_organisers = [event['organiser'] for event in json_handler.event_list]
 
 @app.route('/', methods=['GET'])
 def home():
@@ -37,9 +40,9 @@ def search_profiles():
         print('SEARCH TERMS: ', search_dict)
         print('RESULT: ', result)
     
-        return render_template('search_profiles.html', tags = all_tags, search_dict = search_dict, profiles = result)
+        return render_template('search_profiles.html', tags = all_tags, schools=all_schools, search_dict = search_dict, profiles = result)
     else:
-        return render_template('search_profiles.html', tags = all_tags)
+        return render_template('search_profiles.html', tags = all_tags, schools=all_schools)
 
 
 @app.route('/search_events', methods=['GET', 'POST'])
@@ -60,9 +63,9 @@ def search_events():
         print('SEARCH TERMS: ', search_dict)
         print('RESULT: ', result)
     
-        return render_template('search_events.html', tags = all_tags, search_dict = search_dict, events = result)
+        return render_template('search_events.html', tags = all_tags, all_events=all_events, organisers=all_organisers, search_dict = search_dict, events = result)
     else:
-        return render_template('search_events.html', tags = all_tags)
+        return render_template('search_events.html', tags = all_tags, all_events=all_events, organisers=all_organisers)
 
 
 @app.route('/profile/<string:name>')  # Username
