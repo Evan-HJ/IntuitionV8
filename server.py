@@ -5,10 +5,21 @@ from json_handler import JsonHandler
 app = Flask(__name__, static_url_path='/static')
 
 json_handler = JsonHandler('events.json', 'profiles.json')
-all_tags = ["Chemistry", "Hackathon",  "Math", "Economics", "Physics"]
+all_tags = ["Research",
+"Photography",
+"Art",
+"Chess",
+"Music",
+"Robotics",
+"Computer Science",
+"Writing",
+"Government/International Relations",
+"Astronomy",
+"Cybersecurity",
+"Hackathon",
+"Biology/Medicine"]
 
 all_schools = list(set([school for profile in json_handler.profile_list for school in profile['schools']]))
-print(all_schools)
 all_events = [event['name'] for event in json_handler.event_list]
 all_organisers = [event['organiser'] for event in json_handler.event_list]
 
