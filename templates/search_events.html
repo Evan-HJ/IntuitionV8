@@ -49,7 +49,7 @@ events (List of event dicts)
         {% for event in events %}
             <div class="row justify-content-md-center padding" id = "profilebox">
                 <div class="col-sm-3" id = "profilelink">
-                    <h2> <a href = "/event/{{event['name']}}"> {{event['name']}} by {{event['organiser']}}  </a></h2>         
+                    <p> <a href = "/event/{{event['name']}}"> {{event['name']}} by {{event['organiser']}}  </a></p>         
                 </div>  
             </div>
         {%endfor%}
