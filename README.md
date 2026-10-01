@@ -74,6 +74,4 @@ Flask handles routing and server-side rendering, while Jinja templates assemble 
 
 ## Built in 24 hours
 
-Within the hackathon window, the team moved from problem definition to a working, navigable prototype: shaping the product concept, creating a connected demonstration dataset, implementing multi-field search, and building the complete web interface.
-
-Built by Evan Lim, Koh Jia Hng, and SYY. Evan's work focused on the frontend implementation and interaction design, including the styling system, search interfaces, autocomplete behaviour, and profile experience.
+Within the hackathon window, we moved from problem definition to a working, navigable prototype: shaping the product concept, creating a connected demonstration dataset, implementing multi-field search, and building the complete web interface.
