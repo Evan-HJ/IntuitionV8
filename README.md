@@ -1,8 +1,8 @@
 # GROWTH+
 
-**Helping students discover experiences that strengthen their portfolios.**
+**Helping students find activities and events for their portfolios.**
 
-GROWTH+ is a web platform for pre-university students to find competitions, programmes, and extracurricular opportunities aligned with their interests. Students can also explore the paths taken by their peers and seniors, making it easier to identify worthwhile next steps.
+GROWTH+ is a web app for pre-university students to find competitions, programmes, and extracurricular activities. Students can also look through other profiles to see which events their peers and seniors have joined.
 
 The project was designed and built by a three-person student team during the 24-hour [iNTUition v8.0](https://intuition-v8.devpost.com/) hackathon in February 2022.
 
@@ -10,14 +10,13 @@ The project was designed and built by a three-person student team during the 24-
 
 ## What it does
 
-- Browse a catalogue of academic, creative, technical, and leadership opportunities.
+- Browse academic, creative, technical, and leadership events.
 - Search events by name or organiser and filter them by category.
 - Search student profiles by name, school, and interests.
-- Move between linked profile and event pages to explore shared experiences.
-- Use autocomplete-assisted search to find schools and events quickly.
-- Present the experience through a responsive Bootstrap interface.
+- Move between linked profiles and events.
+- Use autocomplete when searching for schools, organisers, and events.
 
-The demonstration dataset contains **41 events**, **100 student profiles**, and **13 interest categories**, providing enough variety to exercise the platform's search and discovery flows.
+The demonstration data contains **41 events**, **100 student profiles**, and **13 interest categories**.
 
 ![Event search filtered to hackathons](docs/images/growth-search.png)
 
@@ -29,7 +28,7 @@ The demonstration dataset contains **41 events**, **100 student profiles**, and 
 
 ## How it works
 
-Flask handles routing and server-side rendering, while Jinja templates assemble the interface from structured JSON data. A dedicated `JsonHandler` provides profile and event lookup and applies combinations of name, school, organiser, and interest filters. The resulting records are rendered into cross-linked pages, with lightweight JavaScript providing autocomplete interactions in the search experience.
+Flask handles the routes and renders the Jinja templates. `JsonHandler` reads the event and profile data from JSON and applies the search filters. The templates link events to their participants and profiles to their events. JavaScript provides autocomplete on the search forms.
 
 ## Technology
 
@@ -85,4 +84,4 @@ python -m unittest discover -s tests -v
 
 ## Built in 24 hours
 
-Within the hackathon window, we moved from problem definition to a working, navigable prototype: shaping the product concept, creating a connected demonstration dataset, implementing multi-field search, and building the complete web interface.
+We built GROWTH+ during the 24-hour hackathon. By the end, users could search and filter events and profiles, move between connected records, and use the site on both desktop and mobile screens.
