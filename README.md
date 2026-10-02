@@ -19,6 +19,8 @@ The project was designed and built by a three-person student team during the 24-
 
 The demonstration dataset contains **41 events**, **100 student profiles**, and **13 interest categories**, providing enough variety to exercise the platform's search and discovery flows.
 
+![Event search filtered to hackathons](docs/images/growth-search.png)
+
 ## Product views
 
 | Student profile | Event details |
@@ -60,6 +62,14 @@ Flask handles routing and server-side rendering, while Jinja templates assemble 
 
 4. Visit [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
+## Test
+
+Run the automated route, search, and data-integrity checks with:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
 ## Project structure
 
 ```text
@@ -69,7 +79,8 @@ Flask handles routing and server-side rendering, while Jinja templates assemble 
 ├── events.json        # Demonstration event catalogue
 ├── profiles.json      # Demonstration student profiles
 ├── templates/         # Jinja page templates
-└── static/            # Styles, JavaScript, and image assets
+├── static/            # Styles, JavaScript, and image assets
+└── tests/             # Route, search, and data-integrity tests
 ```
 
 ## Built in 24 hours

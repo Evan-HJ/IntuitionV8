@@ -1,117 +1,90 @@
-{%extends 'layout.html'%}
+{% extends 'layout.html' %}
 
-{%block title%}
-    Home Page
-{%endblock%}
+{% block title %}GROWTH+ | Find your next opportunity{% endblock %}
 
-{%block style%}
-<link rel="stylesheet" type="text/css" href="/static/home.css">
-{%endblock%}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
 
-{%block body%}
-    <div class="intro">
-        <div id = "slides" class="carousel slide" data-ride="carousel">
-            <ul class = "carousel-indicators">
-                <li data-target="#slides" data-slide-to = "0" class = "active"></li>
-                <li data-target="#slides" data-slide-to = "1"></li>
-                <li data-target="#slides" data-slide-to = "2"></li>
-            </ul>
+{% block body %}
+<section class="hero">
+  <div class="container hero-content">
+    <span class="eyebrow">Opportunities for students</span>
+    <h1>Build experience around what inspires you.</h1>
+    <p>Discover events, competitions, and programmes—then learn from students who have already taken part.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary btn-lg" href="{{ url_for('search_events') }}">Explore events</a>
+      <a class="btn btn-outline-light btn-lg" href="{{ url_for('search_profiles') }}">Browse people</a>
+    </div>
+  </div>
+</section>
 
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/static/images/intro.jpg">
-                    <div class="carousel-caption">
-                        <h1 class = "display-2"> GROWTH+</h1>
-                        <h3>Join Us Today!</h3>
-                        <a href="/signup"><button type="button" class = "btn btn-outline-light btn-lg"> Sign Up Now!</button></a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/static/images/intro_2.jpeg">
-                    <div class="carousel-caption">
-                        <h1>Find events</h1>
-                        <a href="/search_events"><button type="button" class = "btn btn-outline-light btn-lg"> Explore </button></a>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="/static/images/intro3.jpg">
-                    <div class="carousel-caption">
-                        <h1>Learn from seniors</h1>
-                        <a href="/search_users"><button type="button" class = "btn btn-outline-light btn-lg"> Explore </button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="stats-strip" aria-label="Platform statistics">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-4 stat">
+        <strong>{{ event_count }}</strong>
+        <span>Events</span>
+      </div>
+      <div class="col-4 stat">
+        <strong>{{ profile_count }}</strong>
+        <span>Profiles</span>
+      </div>
+      <div class="col-4 stat">
+        <strong>{{ category_count }}</strong>
+        <span>Categories</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-space">
+  <div class="container">
+    <div class="section-heading text-center">
+      <span class="eyebrow">One connected platform</span>
+      <h2>Turn curiosity into your next experience.</h2>
+      <p>GROWTH+ brings opportunities and student experiences together, making it easier to explore activities that match your interests.</p>
     </div>
 
-    <div class="container-fluid">
-        <div class="row jumbotron">
-            <div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                <p class = "lead">We want to help students build up their portfolio by helping them look for the best activities and events to undertake.</p>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                <a href="#about-us"> <button type="button" class="btn btn-outline-secondary btn-lg">Find out More</button> </a>
-            </div>
-        </div>
+    <div class="row feature-grid">
+      <div class="col-md-4">
+        <article class="feature-card">
+          <span class="feature-number">01</span>
+          <h3>Find opportunities</h3>
+          <p>Browse academic, creative, technical, and leadership events in one searchable catalogue.</p>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="feature-card">
+          <span class="feature-number">02</span>
+          <h3>Follow your interests</h3>
+          <p>Filter by category, organiser, school, or interest to focus on the paths most relevant to you.</p>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <article class="feature-card">
+          <span class="feature-number">03</span>
+          <h3>Learn from others</h3>
+          <p>Explore connected profiles to see which experiences other students have chosen.</p>
+        </article>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="container-fluid padding">
-        <div class="row welcome text-center">
-            <div class="col-12">
-                <h1>An all-in-one platform</h1>
-            </div>
-            <hr>
-            <div class="col-12">
-                <p class = "lead">Welcome to GROWTH+. Here, we offer a variety of activities and events targeted at youths and pre-university students, to help you make better and more informed choices when participating in such events. Alternatively, you can also look at what your seniors have done to follow in their footsteps!</p>
-                <p class="lead">Sign up now to start building your dream portfolio!</p>
-            </div>
-        </div>
+<section class="mission-section" id="about-us">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mission-copy">
+        <span class="eyebrow">Our mission</span>
+        <h2>Make portfolio-building feel less daunting.</h2>
+        <p>Choosing activities for university and future job applications can be difficult. GROWTH+ helps students compare opportunities, identify experiences suited to their interests, and learn from the paths of earlier participants.</p>
+        <a class="text-link" href="{{ url_for('search_events') }}">Start exploring <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="col-lg-6">
+        <img class="mission-image" src="{{ url_for('static', filename='images/company.jpeg') }}" alt="Students collaborating around a laptop">
+      </div>
     </div>
-
-    <div class= "signup-container">
-        <div class="text-containerhome">
-            <h1>Join us Today!</h1>
-            <a href="/signup"><button class = "btn1"> SIGN UP NOW! </button></a>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="aboutus" id = "about-us">
-        <div class="container-fluid padding">
-            <div class="row padding">
-                <div class="col-lg-6">
-                    <h2>Our Mission</h2>
-                    <p>In pre-university studies, students often find it daunting to create portfolios to aid in their university or future job applications.</p>
-                    <p>We want to ease this process and help students find the best activities that are most suited to their passion, and by shortlisting the best activities that is most worth their time and effort.</p>
-                    <p>Ultimately, we hope to create a plotform for seinors to share their experiences, and recommend valuable opportunities to newer batches.</p>
-                </div>
-
-                <div class="col-lg-6">
-                    <img class = "img-fluid" src="/static/images/company.jpeg">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
-    <div class="connect-container">
-        <div class="container-fluid padding">
-            <div class="row text-center padding">
-                <div class="col-12">
-                    <h2>Connect</h2>
-                    <div class="contact-us-container">
-                        <p>Feel free to contact us at GROWTHP@gmail.com for further information.</p>
-                    </div>
-                </div>
-                <div class="col-12 social padding">
-                    <a href="#"><i class = "fab fa-facebook"></i></a>
-                    <a href="#"><i class = "fab fa-twitter"></i></a>
-                    <a href="#"><i class = "fab fa-instagram"></i></a>
-                    <a href="#"><i class = "fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-{%endblock%}
+  </div>
+</section>
+{% endblock %}

@@ -1,40 +1,46 @@
+{% extends 'layout.html' %}
 
+{% block title %}{{ event['name'] }} | GROWTH+{% endblock %}
 
-<!-- NOTE:
-Jinja variables:
-profile
--->
-{%extends 'layout.html'%}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
 
-{%block style%}
-<link rel="stylesheet" type="text/css" href="/static/profile.css">
-{%endblock%}
+{% block body %}
+<section class="detail-section">
+  <div class="container detail-shell">
+    <a class="back-link" href="{{ url_for('search_events') }}"><span aria-hidden="true">←</span> All events</a>
 
-{%block body%}
+    <header class="detail-header event-header">
+      <div>
+        <span class="eyebrow">{{ event['tag'] }}</span>
+        <h1>{{ event['name'] }}</h1>
+        <p>Organised by <strong>{{ event['organiser'] }}</strong></p>
+      </div>
+      <div class="rating-card">
+        <span class="rating-star" aria-hidden="true">★</span>
+        <strong>{{ '%.1f' | format(event['rating']) }}</strong>
+        <span>out of 5</span>
+      </div>
+    </header>
 
-<div class="container-fluid padding">
-	<div class="row padding" id = "userprofile">
-		<div class="col-lg">
-			<h1 class="text-center">{{event['name']}}</h1>
-			<p class="text-center">
-				by <b style = "text-transform:uppercase"> {{event['organiser']}} </b> <br>
-                Category: {{event['tag']}} <br>
-                {{event['rating']}} stars
-			</p>
-
-			<p class="text-secondary font-weight-bold"> </p>
-
-			<p class="text-secondary font-weight-bold">Participants</p>
-			<div class="list-group">
-				{% for name in event['participants'] %}
-				<a href="/profile/{{name}}" class="list-group-item list-group-item-action action">
-					{{name}}
-				</a>
-				{%endfor%}
-			</div>
-		</div>
-	</div>
-</div>
-
-{%endblock%}
-
+    <div class="detail-card experience-card">
+      <div class="list-heading">
+        <div>
+          <span class="eyebrow">Community</span>
+          <h2>Participants</h2>
+        </div>
+        <span>{{ event['participants'] | length }} people</span>
+      </div>
+      <div class="participant-grid">
+        {% for name in event['participants'] %}
+          <a href="{{ url_for('show_profile', name=name) }}">
+            <span class="participant-avatar" aria-hidden="true">{{ name[0] }}</span>
+            <span>{{ name }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,47 +1,55 @@
-<!-- NOTE:
-Jinja variables:
-profile
--->
-{%extends 'layout.html'%}
+{% extends 'layout.html' %}
 
-{%block style%}
-<link rel="stylesheet" type="text/css" href="/static/profile.css">
-{%endblock%}
+{% block title %}{{ profile['name'] }} | GROWTH+{% endblock %}
 
-{%block body%}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
 
-<div class="container-fluid padding">
-	<div class="row padding" id = "userprofile">
-		<div class="col-lg">
-			<h1 class="text-center">{{profile['name']}}</h1>
-			<p class="text-center">
-				Name: <b style = "text-transform:uppercase"> {{profile['name']}} </b> <br>
-			</p>
-			<p class="font-weight-bold">Education</p>
-			<ul>
-				{% for school in profile['schools'] %}
-				<li> {{school}}</li>
-				{%endfor%}
-			</ul>
-			
-			<p class="text-secondary font-weight-bold">Interests</p>
-			<ul>
-				{% for tag in profile['tags']%}
-				<li> {{tag}}</li>
-				{%endfor%}
-			</ul>
+{% block body %}
+<section class="detail-section">
+  <div class="container detail-shell">
+    <a class="back-link" href="{{ url_for('search_profiles') }}"><span aria-hidden="true">←</span> All people</a>
 
-			<p class="text-secondary font-weight-bold">Events</p>
-			<div class="list-group">
-				{% for event in profile['events'] %}
-				<a href="/event/{{event}}" class="list-group-item list-group-item-action action">
-					{{event}}
-				</a>
-				{%endfor%}
-			</div>
-		</div>
-	</div>
-</div>
+    <header class="detail-header">
+      <div class="detail-avatar" aria-hidden="true">{{ profile['name'][0] }}</div>
+      <div>
+        <span class="eyebrow">Student profile</span>
+        <h1>{{ profile['name'] }}</h1>
+        <p>{{ profile['events'] | length }} experiences across {{ profile['tags'] | length }} interests</p>
+      </div>
+    </header>
 
+    <div class="row">
+      <aside class="col-lg-4">
+        <div class="detail-card">
+          <h2>Education</h2>
+          <ul class="clean-list">
+            {% for school in profile['schools'] %}<li>{{ school }}</li>{% endfor %}
+          </ul>
+        </div>
+        <div class="detail-card">
+          <h2>Interests</h2>
+          <div class="chip-row">
+            {% for tag in profile['tags'] %}<span class="chip">{{ tag }}</span>{% endfor %}
+          </div>
+        </div>
+      </aside>
 
-{%endblock%}
+      <div class="col-lg-8">
+        <div class="detail-card experience-card">
+          <h2>Events and experiences</h2>
+          <div class="experience-list">
+            {% for event in profile['events'] %}
+              <a href="{{ url_for('show_event', name=event) }}">
+                <span>{{ event }}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

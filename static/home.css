@@ -1,125 +1,168 @@
-
-
-.content {
-    /* padding: 0; */
-    margin-bottom: 40px;
-    height: 100%;
-    /* color: #000; */
-    /* text-align: center;
-    justify-content: center; */
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 72vh;
+  align-items: center;
+  color: white;
+  background:
+    linear-gradient(100deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.68) 48%, rgba(15, 23, 42, 0.18) 100%),
+    url("images/intro.jpg") center 42% / cover no-repeat;
 }
 
-
-.carousel-inner {
-    height: 70vh;
+.hero-content {
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
-.carousel-inner img {
+
+.hero .eyebrow {
+  color: #a5f3fc;
+}
+
+.hero h1 {
+  max-width: 770px;
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.75rem, 6vw, 5.2rem);
+  line-height: 1.04;
+}
+
+.hero p {
+  max-width: 650px;
+  margin-bottom: 2rem;
+  color: #e2e8f0;
+  font-size: clamp(1rem, 2vw, 1.22rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.stats-strip {
+  color: white;
+  background: var(--primary);
+}
+
+.stat {
+  padding: 1.5rem 0.5rem;
+}
+
+.stat + .stat {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.stat strong,
+.stat span {
+  display: block;
+}
+
+.stat strong {
+  font-size: clamp(1.45rem, 4vw, 2.2rem);
+}
+
+.stat span {
+  color: #c7d2fe;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-space {
+  padding: 6rem 0;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.section-heading h2,
+.mission-copy h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.section-heading p,
+.feature-card p,
+.mission-copy p {
+  color: var(--muted);
+}
+
+.feature-grid > div {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card {
+  width: 100%;
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.feature-number {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.feature-card h3 {
+  margin: 1rem 0 0.65rem;
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.mission-section {
+  padding: 6rem 0;
+  background: var(--surface-soft);
+}
+
+.mission-copy {
+  padding-right: 4rem;
+}
+
+.mission-image {
+  width: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.text-link {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .mission-copy {
+    margin-bottom: 2.5rem;
+    padding-right: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .hero {
+    min-height: 68vh;
+  }
+
+  .hero-actions .btn {
     width: 100%;
-    height: 100%;
-}
-.carousel-caption {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-}
-.carousel-caption h1 {
-    font-size: 500%;
-    text-shadow: 1px 1px 15px #000;
-}
-/* .carousel-caption h3 {
-    font-size: 2--%;
-    font-weight: 500;
-    text-shadow: 1px 1px 10px #000;
-    padding-bottom: 10px;
-} */
-.jumbotron {
-    padding: 40px;
-    padding-right: 100px;
-}
-.padding {
-    padding-bottom: 16px;
-}
-.welcome {
-    width: 75%;
-    margin: 0 auto;
-    padding-top: 32px;
-}
-.welcome hr {
-    border-top: 2px solid #b4b4b4;
-    width: 95%;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-.subject {
-    margin-bottom: 20px;
-}
+  }
 
-#fixed {
-    background: linear-gradient(rgba(26,26,26,0.3),rgba(26,26,26,0.3)),url("../static/images/repetition.jpg");
-    height: 600px;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-
-
-    padding-top: 300px;
-    text-align: center;
-    color: white;
-}
-
-figure {
-    margin: 0;
-    margin-bottom: 50px;
-}
-
-.text-container {
-    width: 70%;
-    margin: 0 auto;
-    margin-bottom: 50px;
-}
-
-.text-containerhome {
-    margin: 10vh auto;
-    /* padding: 0; */
-    width: 80%;
-    text-align: center;
-}
-
-.text-containerhome h1 {
-    text-shadow: 1px 1px 10px #000;
-}
-
-.card {
-    height: 500px;
-}
-
-.card-img-top {
-    height: 300px;
-}
-
-.signup-container {
-    width: 100%;
-    height: 50vh;
-    background: linear-gradient(rgba(26,26,26,0.3),rgba(26,26,26,0.3)),url("../static/images/home-videocall.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    color: #FFFFFF;
-    padding: 10vh 10vw;
-    margin-bottom: 100px;
-}
-
-.aboutus {
-    margin: 20px 30px;
-    margin-bottom: 70px;
-}
-
-.connect-container {
-    margin-bottom: 70px;
-}
-.contact-us-container {
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 50px;
+  .section-space,
+  .mission-section {
+    padding: 4rem 0;
+  }
 }

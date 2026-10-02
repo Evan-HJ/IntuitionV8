@@ -1,67 +1,88 @@
-<!-- NOTE:
-Jinja variables:
-tags
-events (List of event dicts)
--->
+{% extends 'layout.html' %}
 
-{%extends 'layout.html'%}
+{% block title %}Events | GROWTH+{% endblock %}
 
-{%block style%}
-<link rel="stylesheet" type="text/css" href="../static/search.css">
-{%endblock%}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+{% endblock %}
 
-{%block body%}
+{% block body %}
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Find your next challenge</span>
+    <h1>Explore opportunities</h1>
+    <p>Search competitions, programmes, and events across academic, creative, and technical interests.</p>
+  </div>
+</section>
 
-    <div class = "container-fluid" id = "search-box">
-        <h1>EVENTS</h1>
-        <p>Search and filter for events with the search bar. <br><b> click on </b> events that you are interested in to see what's in store! </p>
+<section class="search-section">
+  <div class="container">
+    <form autocomplete="off" action="{{ url_for('search_events') }}" method="GET" class="filter-panel">
+      <div class="row">
+        <div class="col-md-6 form-group autocomplete">
+          <label for="event-name">Event name</label>
+          <input class="form-control" id="event-name" type="search" name="name" value="{{ search_dict.get('name', '') }}" placeholder="e.g. Whitehacks">
+        </div>
+        <div class="col-md-6 form-group autocomplete">
+          <label for="organiser">Organiser</label>
+          <input class="form-control" id="organiser" type="search" name="organiser" value="{{ search_dict.get('organiser', '') }}" placeholder="e.g. NUS">
+        </div>
+      </div>
 
-        <form autocomplete="off" action="/search_events" method="POST" id="form">
-            <div class="autocomplete" style="width:300px;">
-                <small id="emailHelp" class="form-text text-muted">Search for a specific event.</small>
-                <input class="form-control" id="nameinput" type="text" placeholder = 'Enter name' name = "name">
+      <fieldset>
+        <legend>Categories</legend>
+        <div class="tag-grid">
+          {% for tag in tags %}
+            {% set tag_id = 'event-tag-' ~ loop.index %}
+            <div class="tag-option">
+              <input type="checkbox" value="{{ tag }}" name="tags" id="{{ tag_id }}"{% if tag in search_dict.get('tags', []) %} checked{% endif %}>
+              <label for="{{ tag_id }}">{{ tag }}</label>
             </div>
+          {% endfor %}
+        </div>
+      </fieldset>
 
-            <br>
-            <div class="autocomplete" style="width:300px;">
-                <small id="emailHelp" class="form-text text-muted">Search for a specific organiser.</small>
-                <input class = "form-control" id="organiserinput" type="text" name="organiser" placeholder="Enter organiser">
-            </div>
-            
-            <div id="tag-div">
-            {% for tag in tags %}
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="tags" value="{{tag}}" id="defaultCheck1" form="form">
-                <label class="form-check-label" for="{{tag}}">
-                {{tag}}
-                </label>
-            </div>
-            {% endfor %}
-            </div>
+      <div class="filter-actions">
+        <button type="submit" class="btn btn-primary">Search events</button>
+        {% if search_dict %}<a href="{{ url_for('search_events') }}" class="btn btn-link">Clear filters</a>{% endif %}
+      </div>
+    </form>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    <div class="results-heading">
+      <div>
+        <span class="eyebrow">Results</span>
+        <h2>{{ events | length }} {{ 'event' if events | length == 1 else 'events' }}</h2>
+      </div>
     </div>
 
-    <div class="container-fluid padding" id = "profiles-box">
-        <p> Search Complete. There are <strong> {{events | length}}</strong>  results. </p>
-
+    {% if events %}
+      <div class="result-grid">
         {% for event in events %}
-            <div class="row justify-content-md-center padding" id = "profilebox">
-                <div class="col-sm-3" id = "profilelink">
-                    <p> <a href = "/event/{{event['name']}}"> {{event['name']}} by {{event['organiser']}}  </a></p>         
-                </div>  
+          <article class="result-card">
+            <div class="event-meta">
+              <span class="chip">{{ event['tag'] }}</span>
+              <span class="rating" aria-label="Rated {{ event['rating'] }} out of 5">★ {{ '%.1f' | format(event['rating']) }}</span>
             </div>
-        {%endfor%}
-    </div>
+            <h3><a href="{{ url_for('show_event', name=event['name']) }}">{{ event['name'] }}</a></h3>
+            <p>Organised by {{ event['organiser'] }}</p>
+            <a class="card-link" href="{{ url_for('show_event', name=event['name']) }}">View event <span aria-hidden="true">→</span></a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h3>No matching events</h3>
+        <p>Try removing a filter or searching for a different organiser or category.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
 
-{%endblock%}
-
-{%block script%} 
-<script src="../static/script.js"></script>
+{% block script %}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 <script>
-/*Pass in list of school names*/
-autocomplete(document.getElementById("organiserinput"), {{organisers|safe}});
-autocomplete(document.getElementById("nameinput"), {{all_events|safe}});
+  autocomplete(document.getElementById("event-name"), {{ all_events | tojson }});
+  autocomplete(document.getElementById("organiser"), {{ organisers | tojson }});
 </script>
-{%endblock%}
+{% endblock %}

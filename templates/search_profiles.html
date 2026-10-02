@@ -1,112 +1,92 @@
-<!-- NOTE:
-Jinja variables:
-tags
-profiles (List of profile dicts)
--->
+{% extends 'layout.html' %}
 
-{%extends 'layout.html'%}
+{% block title %}People | GROWTH+{% endblock %}
 
-{%block style%}
-<link rel="stylesheet" type="text/css" href="../static/search.css">
-{%endblock%}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+{% endblock %}
 
-{%block body%}
-    <div class = "container-fluid" id = "search-box">
-        <h1>USERS</h1>
-        <p>Search and filter for people with the search bar. <br><b> click on </b> people that you are interested in to see what they have done! </p>
+{% block body %}
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Learn from experience</span>
+    <h1>Explore student journeys</h1>
+    <p>Search by person, school, or interest to discover the opportunities other students pursued.</p>
+  </div>
+</section>
 
-        <form autocomplete="off" action="/search_profiles" method="POST" id="form">
-            <div class="form-group" style="width:300px;">
-                <small id="emailHelp" class="form-text text-muted">Search for a specific user.</small>
-                <input class="form-control" type="text" id ="name" placeholder = 'Enter name' name = "name">
+<section class="search-section">
+  <div class="container">
+    <form autocomplete="off" action="{{ url_for('search_profiles') }}" method="GET" class="filter-panel">
+      <div class="row">
+        <div class="col-md-6 form-group autocomplete">
+          <label for="profile-name">Name</label>
+          <input class="form-control" id="profile-name" type="search" name="name" value="{{ search_dict.get('name', '') }}" placeholder="e.g. Ella-May Lopez">
+        </div>
+        <div class="col-md-6 form-group autocomplete">
+          <label for="school">School</label>
+          <input class="form-control" id="school" type="search" name="school" value="{{ search_dict.get('school', '') }}" placeholder="e.g. Central JC">
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Interests</legend>
+        <div class="tag-grid">
+          {% for tag in tags %}
+            {% set tag_id = 'profile-tag-' ~ loop.index %}
+            <div class="tag-option">
+              <input type="checkbox" value="{{ tag }}" name="tags" id="{{ tag_id }}"{% if tag in search_dict.get('tags', []) %} checked{% endif %}>
+              <label for="{{ tag_id }}">{{ tag }}</label>
             </div>
+          {% endfor %}
+        </div>
+      </fieldset>
 
-            <div class="autocomplete" style="width:300px;">
-                <small id="emailHelp" class="form-text text-muted">Search for a specific school.</small>
-                <input class = "form-control" id="myInput" type="text" name="school" placeholder="Enter school" form="form">
-            </div>
-            
-            <div  id="tag-div">
-            {% for tag in tags %}
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{tag}}" name="tags" id="defaultCheck1">
-                <label class="form-check-label" for="{{tag}}">
-                  {{tag}}
-                </label>
-            </div>
-            
-            {% endfor %}
-            </div>
+      <div class="filter-actions">
+        <button type="submit" class="btn btn-primary">Search people</button>
+        {% if search_dict %}<a href="{{ url_for('search_profiles') }}" class="btn btn-link">Clear filters</a>{% endif %}
+      </div>
+    </form>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    <div class="results-heading">
+      <div>
+        <span class="eyebrow">Results</span>
+        <h2>{{ profiles | length }} {{ 'person' if profiles | length == 1 else 'people' }}</h2>
+      </div>
     </div>
 
-    <div class="container-fluid padding" id = "profiles-box">
-        <p> Search Complete. There are <strong> {{profiles | length}}</strong>  results. </p>
-
+    {% if profiles %}
+      <div class="result-grid">
         {% for profile in profiles %}
-            <div class="row justify-content-md-center padding" id = "profilebox">
-                <div class="col-sm-3" id = "profilelink">
-                    <h2><a href = "/profile/{{profile['name']}}"> {{profile['name']}}  </a></h2>
-                </div>
-
-                <div class="col-sm-3" id = "profilelink2">
-                    <label> Education </label>
-                    <ul>
-                        {% for school in profile['schools'] %}
-                        <li> {{school}}</li>
-                        {%endfor%}
-                    </ul>
-                </div> 
-
-                <div class="col-sm-3" id = "profilelink2">
-                    <label> Interests </label>
-                    <ul>
-                        {% for tag in profile['tags']%}
-                        <li> {{tag}}</li>
-                        {%endfor%}
-                    </ul>
-                </div>
+          <article class="result-card">
+            <div class="result-card-top">
+              <div class="avatar" aria-hidden="true">{{ profile['name'][0] }}</div>
+              <div>
+                <h3><a href="{{ url_for('show_profile', name=profile['name']) }}">{{ profile['name'] }}</a></h3>
+                <p>{{ profile['schools'] | join(' · ') }}</p>
+              </div>
             </div>
-        {%endfor%}
-    </div>
-
-    <!-- <div class = "meetings-container">
-        <p> Search Complete. There are <strong> {{profiles | length}}</strong>  results. </p>
-
-        {% for profile in profiles %}
-            <div class = "profiles-box">
-                <div class="meetings-details">
-                    <h2>Name: <a href = "/profile/{{profile['name']}}"> {{profile['name']}}  </a></h2>
-
-                    <label> Education </label>
-                    <ul>
-                        {% for school in profile['schools'] %}
-                        <li> {{school}}</li>
-                        {%endfor%}
-                    </ul>
-
-                    <label> Interests </label>
-                    <ul>
-                        {% for tag in profile['tags']%}
-                        <li> {{tag}}</li>
-                        {%endfor%}
-                    </ul>               
-                </div>
-
+            <div class="chip-row">
+              {% for tag in profile['tags'] %}<span class="chip">{{ tag }}</span>{% endfor %}
             </div>
-        {%endfor%}
+            <a class="card-link" href="{{ url_for('show_profile', name=profile['name']) }}">View profile <span aria-hidden="true">→</span></a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">
+        <h3>No matching people</h3>
+        <p>Try removing a filter or searching for a different school or interest.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
 
-    </div> -->
-
-
-{%endblock%}
-
-{%block script%} 
-<script src="../static/script.js"></script>
+{% block script %}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 <script>
-/*Pass in list of school names*/
-autocomplete(document.getElementById("myInput"), {{schools|safe}});
+  autocomplete(document.getElementById("profile-name"), {{ profile_names | tojson }});
+  autocomplete(document.getElementById("school"), {{ schools | tojson }});
 </script>
-{%endblock%}
+{% endblock %}
